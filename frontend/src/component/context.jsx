@@ -31,10 +31,12 @@ const getAllPrerequisites = (code, data, visited = new Set()) => {
   return prerequisites;
 };
 
+
+
 function Provider({ children }) {
   const [theme, setTheme] = useState(null);
   const [dersler, setders] = useState([]);
-
+  const [isdata , setdata] = useState(false);
   useEffect(() => {
     if (theme) {
       const allPrerequisites = getAllPrerequisites(theme.code, myData);
@@ -43,7 +45,7 @@ function Provider({ children }) {
   }, [theme]);
 
   return (
-    <my_context.Provider value={{ theme, setTheme, dersler }}>
+    <my_context.Provider value={{ theme, setTheme, dersler,isdata,setdata}}>
       {children}
     </my_context.Provider>
   );

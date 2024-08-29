@@ -64,21 +64,25 @@ body{
   padding: 2rem 0;
 }
 
-.selecticive_lesson{
-  display: none;
+.selecticive_lesson {
+  opacity: 0;
+  visibility: hidden;
   position: absolute;
-  background:black;
+  background: black;
   color: #ffffff;
   z-index: 100;
   width: 300px;
   max-height: 300px;
   height: fit-content;
   overflow: scroll;
+  transition: opacity 1s, visibility 1s;
 }
 
-.elecBox:hover .selecticive_lesson{
-  display: block;
+.elecBox:hover .selecticive_lesson {
+  opacity: 1;
+  visibility: visible;
 }
+
 
 .selecticive_lesson li{
   margin: 0.5rem 0.2rem 0.5rem 0.2rem;
@@ -90,15 +94,15 @@ body{
 }
 
 .arrows{
- stroke: #d4caca91; 
+ stroke: #d4caca00; 
  stroke-width: 2px;
  z-index: 0;
 }
 .arrowHead{
-  fill: #d4caca91;
+  fill: #d4caca00;
 }
 
-.arrowHeadactive{
+.arrowHead.active{
   animation: glowing-head 2s ease-in-out forwards;
 }
 

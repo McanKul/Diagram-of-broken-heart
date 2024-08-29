@@ -33,7 +33,7 @@ function MySvg(props) {
       });
       setDesCoords(newCoords);
    };
-
+   const {data ,setdata} = useContext(my_context)
    useEffect(() => {
       calculateCoords();
       calculateDesCoords();
@@ -42,11 +42,12 @@ function MySvg(props) {
          calculateDesCoords();
       };
       window.addEventListener('resize', handleResize);
+      setdata(false)
       return () => {
          window.removeEventListener('resize', handleResize);
       };
-
-   }, [props.data]);
+      
+   }, [data]);
 
    const getCoordById = (id) => {
       return coords.find(coord => coord.id === id);
@@ -81,7 +82,7 @@ function MySvg(props) {
                orient="auto"
                markerUnits="userSpaceOnUse"
             >
-               <polygon points="0 0, 20 7, 0 14" className='arrowHeadactive'/>
+               <polygon points="0 0, 20 7, 0 14" className='arrowHead active'/>
             </marker>
          </defs>
          {props.data.map((lesson) => (

@@ -5,10 +5,11 @@ import { my_context } from './context';
 
 
 function Box(props) {
-   const { setTheme,dersler } = useContext(my_context);
+   const { setTheme,dersler ,setdata} = useContext(my_context);
 
    const findpreq = (element) =>{
       setTheme(element);
+      setdata(true);
    }
    return (
       props.lesson.code !== "ELECTIVE" ?
@@ -16,15 +17,17 @@ function Box(props) {
             <p>{props.lesson.name}</p>
          </div> :
          
-            <ElecBox lesson={props.lesson} data={props.data}/>
+         <ElecBox lesson={props.lesson} data={props.data}/>
          
    )
 }
 
 function Semester(props) {
+   const elective_l = myData.filter( ders => ders.code.includes("ELECTIVE"));
+   const non_elective_l = myData.filter( ders => !ders.code.includes("ELECTIVE"))
    return (
       <div className='semesters' key={`semester${props.index}`}>
-         {myData.map((lesson, index) =>
+         {non_elective_l.concat(elective_l).map((lesson, index) =>
             (lesson.semester === props.index + 1) ? (
                <Box lesson={lesson} data={props.data}/>
             ) : null
